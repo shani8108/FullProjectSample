@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace ProjectDAL
 {
-    public class SqlQuery
+    public class SqlQuery:BaseSQL
     {
         public delegate void SetDataReader_delegate(SqlDataReader reader);
         public delegate object SetResulrDataReader_delegate(SqlDataReader reader);

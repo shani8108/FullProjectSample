@@ -10,27 +10,32 @@ using System.Threading.Tasks;
 
 namespace ProjectEntities
 {
-    public class ProductEntities
+    public class ProductEntities:BaseEntities
     {
-        public static DataTable GetAllProductE()
+        public ProductSQL productSQL { get; set; }
+        public ProductEntities()
         {
-            return ProductSQL.GetAllProductSQL();
+            productSQL= new ProductSQL();
         }
-        public static DataTable GetProductE(int id)
+        public List<ProductView> GetAllProductE()
         {
-            return ProductSQL.GetProductSQL(id);
+            return DataTableToList<ProductView>(productSQL.GetAllProductSQL());
         }
-        public static string InsertProductE(Product prod)
+        public List<ProductView> GetProductE(int id)
         {
-            return ProductSQL.InsertProductSQL(prod);
+            return DataTableToList<ProductView>(productSQL.GetProductSQL(id));
         }
-        public static string UpdateProductE(int id, Product prod)
+        public string InsertProductE(Product prod)
         {
-            return ProductSQL.UpdateProductSQL(id, prod);
+            return productSQL.InsertProductSQL(prod);
         }
-        public static string DeleteProductE(int id)
+        public string UpdateProductE(int id, Product prod)
         {
-            return ProductSQL.DeleteProductSQL(id);
+            return productSQL.UpdateProductSQL(id, prod);
+        }
+        public string DeleteProductE(int id)
+        {
+            return productSQL.DeleteProductSQL(id);
         }
     }
 }

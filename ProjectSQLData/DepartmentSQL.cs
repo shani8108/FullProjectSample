@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ProjectSQLData
 {
-    public class DepartmentSQL
+    public class DepartmentSQL: BaseSQL
     {
-        public static DataTable GetAllDepartmentSQL()
+        public DataTable GetAllDepartmentSQL()
         {
             string query = @"exec getAllDep";
             DataTable table = new DataTable();
@@ -20,7 +20,7 @@ namespace ProjectSQLData
             return table;
         }
 
-        public static DataTable GetDepartmentSQL(int id)
+        public DataTable GetDepartmentSQL(int id)
         {
             string query = $"exec getDep {id}";
             DataTable table = new DataTable();
@@ -28,14 +28,14 @@ namespace ProjectSQLData
 
             return table;
         }
-        public static string InsertDepartmentSQL(Department dep)
+        public string InsertDepartmentSQL(Department dep)
         {
             string query = $"exec insertDep '{dep.Name}','{dep.Description}'";
             DataTable table = new DataTable();
             SqlQuery.RunCommand(query, table.Load);
             return "Added Department Successfuly";
         }
-        public static string UpdateDepartmentSQL(int id,Department dep)
+        public string UpdateDepartmentSQL(int id,Department dep)
         {
             string query = $"exec updateDep {id},'{dep.Name}','{dep.Description}')";
             DataTable table = new DataTable();
@@ -43,7 +43,7 @@ namespace ProjectSQLData
             return "Updated Department Successfuly";
 
         }
-        public static string DeleteDepartmentSQL(int id)
+        public string DeleteDepartmentSQL(int id)
         {
             string query = $"exec deleteDep {id}";
             DataTable table = new DataTable();

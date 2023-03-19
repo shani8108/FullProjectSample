@@ -11,11 +11,16 @@ namespace ProjectUI.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
+        public DepartmentEntities departmentEntities  { get; set; }
+        public DepartmentController()
+        {
+            departmentEntities = new DepartmentEntities();
+        }
         // GET: api/<DepartmentController>
         [HttpGet]
         public JsonResult Get()
         {
-            DataTable table = DepartmentEntities.GetAllDepartmentE();
+            List<Department> table = departmentEntities.GetAllDepartmentE();
 
             return new JsonResult(table);
         }
@@ -24,7 +29,7 @@ namespace ProjectUI.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            DataTable table = DepartmentEntities.GetDepartmentE(id);
+            List<Department> table = departmentEntities.GetDepartmentE(id);
             return new JsonResult(table);
         }
 
@@ -32,7 +37,7 @@ namespace ProjectUI.Controllers
         [HttpPost]
         public JsonResult Post([FromBody] Department dep)
         {
-            string res = DepartmentEntities.InsertDepartmentE(dep);
+            string res = departmentEntities.InsertDepartmentE(dep);
             return new JsonResult(res);
         }
 
@@ -40,7 +45,7 @@ namespace ProjectUI.Controllers
         [HttpPut("{id}")]
         public JsonResult Put(int id, [FromBody] Department dep)
         {
-            string res= DepartmentEntities.UpdateDepartmentE(id, dep);
+            string res= departmentEntities.UpdateDepartmentE(id, dep);
             return new JsonResult(res);
         }
 
@@ -48,7 +53,7 @@ namespace ProjectUI.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            string res=DepartmentEntities.DeleteDepartmentE(id);
+            string res=departmentEntities.DeleteDepartmentE(id);
             return new JsonResult(res);
         }
     }

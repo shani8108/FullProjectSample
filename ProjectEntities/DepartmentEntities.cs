@@ -4,29 +4,34 @@ using System.Data;
 
 namespace ProjectEntities
 {
-    public class DepartmentEntities
+    public class DepartmentEntities:BaseEntities
     {
-        public static DataTable GetAllDepartmentE()
+        public DepartmentSQL departmentSQL{ get; set; }
+        public DepartmentEntities()
         {
-            return DepartmentSQL.GetAllDepartmentSQL();
+            departmentSQL = new DepartmentSQL();
+        }
+        public  List<Department> GetAllDepartmentE()
+        {
+            return DataTableToList<Department>(departmentSQL.GetAllDepartmentSQL());
         }
 
-        public static DataTable GetDepartmentE(int id)
+        public List<Department> GetDepartmentE(int id)
         {
-            return DepartmentSQL.GetDepartmentSQL(id);
+            return DataTableToList<Department>(departmentSQL.GetDepartmentSQL(id));
         }
-        public static string InsertDepartmentE(Department dep)
+        public string InsertDepartmentE(Department dep)
         {
-            return DepartmentSQL.InsertDepartmentSQL(dep);
+            return departmentSQL.InsertDepartmentSQL(dep);
         }
-        public static string UpdateDepartmentE(int id, Department dep)
+        public string UpdateDepartmentE(int id, Department dep)
         {
-            return DepartmentSQL.UpdateDepartmentSQL(id, dep);
+            return departmentSQL.UpdateDepartmentSQL(id, dep);
 
         }
-        public static string DeleteDepartmentE(int id)
+        public string DeleteDepartmentE(int id)
         {
-            return DepartmentSQL.DeleteDepartmentSQL(id);
+            return departmentSQL.DeleteDepartmentSQL(id);
         }
     }
 }

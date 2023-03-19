@@ -12,10 +12,15 @@ namespace ProjectUI.Controllers
     public class ProductController : ControllerBase
     {
         // GET: api/<ProductController>
+        public ProductEntities productEntities { get; set; }
+        public ProductController()
+        {
+            productEntities= new ProductEntities();
+        }
         [HttpGet]
         public JsonResult Get()
         {
-            DataTable table = ProductEntities.GetAllProductE();
+            List<ProductView> table = productEntities.GetAllProductE();
             return new JsonResult(table);
         }
 
@@ -23,7 +28,7 @@ namespace ProjectUI.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            DataTable table = ProductEntities.GetProductE(id);
+            List<ProductView> table = productEntities.GetProductE(id);
             return new JsonResult(table);
         }
 
@@ -31,7 +36,7 @@ namespace ProjectUI.Controllers
         [HttpPost]
         public JsonResult Post([FromBody] Product prod)
         {
-            string res= ProductEntities.InsertProductE(prod);
+            string res= productEntities.InsertProductE(prod);
             return new JsonResult(res);
         }
 
@@ -39,7 +44,7 @@ namespace ProjectUI.Controllers
         [HttpPut("{id}")]
         public JsonResult Put(int id, [FromBody] Product prod)
         {
-            string res= ProductEntities.UpdateProductE(id, prod);
+            string res= productEntities.UpdateProductE(id, prod);
             return new JsonResult(res);
         }
 
@@ -47,7 +52,7 @@ namespace ProjectUI.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            string res=ProductEntities.DeleteProductE(id);
+            string res=productEntities.DeleteProductE(id);
             return new JsonResult(res);
         }
     }

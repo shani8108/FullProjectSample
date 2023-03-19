@@ -4,9 +4,9 @@ using System.Data;
 
 namespace ProjectSQLData
 {
-    public class ProductSQL
+    public class ProductSQL: BaseSQL
     {
-        public static DataTable GetAllProductSQL()
+        public DataTable GetAllProductSQL()
         {
             string query = @"exec getAllProd";
             DataTable table = new DataTable();
@@ -14,7 +14,7 @@ namespace ProjectSQLData
 
             return table;
         }
-        public static DataTable GetProductSQL(int id)
+        public DataTable GetProductSQL(int id)
         {
             string query = $"exec getProd {id}";
             DataTable table = new DataTable();
@@ -22,21 +22,21 @@ namespace ProjectSQLData
 
             return table;
         }
-        public static string InsertProductSQL(Product prod)
+        public string InsertProductSQL(Product prod)
         {
             string query = $"exec insertProd '{prod.Name}',{prod.Price},{prod.InStock},{prod.DepartmentId}";
             DataTable table = new DataTable();
             SqlQuery.RunCommand(query, table.Load);
             return "Added Product Successfuly";
         }
-        public static string UpdateProductSQL(int id,Product prod)
+        public string UpdateProductSQL(int id,Product prod)
         {
             string query = $"exec updateProd {id},'{prod.Name}',{prod.Price},{prod.InStock},{prod.DepartmentId}";
             DataTable table = new DataTable();
             SqlQuery.RunCommand(query, table.Load);
             return "Updated Product Successfuly";
         }
-        public static string DeleteProductSQL(int id)
+        public string DeleteProductSQL(int id)
         {
             string query = $"exec deleteProd {id}";
             DataTable table = new DataTable();
