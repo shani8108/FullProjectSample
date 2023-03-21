@@ -11,4 +11,8 @@
     <ProjectReference Include="..\ProjectModel\ProjectModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SQL Query\" />
+  </ItemGroup>
+
 </Project>

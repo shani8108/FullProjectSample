@@ -28,7 +28,7 @@ namespace ProjectUI.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            List<ProductView> table = productEntities.GetProductE(id);
+            List<Product> table = productEntities.GetProductE(id);
             return new JsonResult(table);
         }
 

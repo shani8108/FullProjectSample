@@ -37,7 +37,7 @@ namespace ProjectSQLData
         }
         public string UpdateDepartmentSQL(int id,Department dep)
         {
-            string query = $"exec updateDep {id},'{dep.Name}','{dep.Description}')";
+            string query = $"exec updateDep {id},'{dep.Name}','{dep.Description}'";
             DataTable table = new DataTable();
             SqlQuery.RunCommand(query, table.Load);
             return "Updated Department Successfuly";

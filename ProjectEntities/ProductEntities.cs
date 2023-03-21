@@ -21,9 +21,9 @@ namespace ProjectEntities
         {
             return DataTableToList<ProductView>(productSQL.GetAllProductSQL());
         }
-        public List<ProductView> GetProductE(int id)
+        public List<Product> GetProductE(int id)
         {
-            return DataTableToList<ProductView>(productSQL.GetProductSQL(id));
+            return DataTableToList<Product>(productSQL.GetProductSQL(id));
         }
         public string InsertProductE(Product prod)
         {

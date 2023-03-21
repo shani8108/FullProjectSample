@@ -1,4 +1,6 @@
-﻿namespace ProjectModel
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProjectModel
 {
     public class Department
     {
