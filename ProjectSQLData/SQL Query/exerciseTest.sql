@@ -44,6 +44,7 @@ HAVING COUNT(*) = (
     FROM (
         SELECT COUNT(*) AS Frequency
         FROM Orders
+        where EmployeeID=e.EmployeeID
         GROUP BY ShipCountry
     ) AS ShippingFrequencies
 )
