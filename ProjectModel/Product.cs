@@ -14,5 +14,10 @@ namespace ProjectModel
         public double Price { get; set; }
         public int InStock { get; set; }
         public int DepartmentId { get; set; }
+
+        //from prod in products
+        //                                    orderby prod.ProductName
+        //                         select prod;
+
     }
 }
